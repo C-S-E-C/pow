@@ -107,7 +107,7 @@ aid=uuid&password=hashed_password&otp=hashed_otp
 **请求：**
 ```
 powdata=SYNPOW;{uuid};{aid};{nonce}
-aid=账号id #或从cookie获取
+aid={账号id} #或从cookie获取
 ```
 
 **响应：**
