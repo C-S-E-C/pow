@@ -106,8 +106,8 @@ Submit proof of work and earn coffee rewards.
 
 **Request:**
 ```
-powdata=SYNPOW;{uuid};{aid};{nonce}
-aid={account id} or provide automaticly via cookie
+powdata=SYNPOW;{uuid};{aid};{nonce}&
+aid={account id} #or provide automaticly via cookie
 ```
 
 **Response:**
