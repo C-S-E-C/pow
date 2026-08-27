@@ -1,5 +1,3 @@
-<div style="text-align:center;">
-
 # Syntropy POW API
 
 [English](./README.md) | [简体中文](./README.ZH_HANS.md)
@@ -7,7 +5,6 @@
 ---
 
 A Proof of Work (POW) API where users earn coffee rewards by solving SHA-512 challenges.
-</div>
 
 ## Features
 
