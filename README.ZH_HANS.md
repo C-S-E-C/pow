@@ -23,7 +23,7 @@
 **请求：** 无请求体
 
 **响应：**
-^^^json
+```json
 {
   "success": 1,
   "aid": "uuid",
@@ -31,7 +31,7 @@
   "otp": "hashed_otp",
   "message": "Account created! Cookie set for auto-login"
 }
-^^^
+```
 
 > ⚠️ 请保存好你的密码和 OTP，它们只返回一次！
 
@@ -49,12 +49,12 @@
 | 完整 | `aid` + `password` + `otp` | `aid` + `password` + `otp` |
 
 **请求：**
-^^^
+```
 aid=uuid&password=hashed_password&otp=hashed_otp
-^^^
+```
 
 **响应：**
-^^^json
+```json
 {
   "success": 1,
   "aid": "uuid",
@@ -62,7 +62,7 @@ aid=uuid&password=hashed_password&otp=hashed_otp
   "has_otp": true,
   "message": "Login success! Cookie set with: aid, password, otp"
 }
-^^^
+```
 
 ---
 
@@ -72,12 +72,12 @@ aid=uuid&password=hashed_password&otp=hashed_otp
 **请求：** 无请求体
 
 **响应：**
-^^^json
+```json
 {
   "success": 1,
   "message": "Logout success! Cookie cleared"
 }
-^^^
+```
 
 ---
 
@@ -88,7 +88,7 @@ aid=uuid&password=hashed_password&otp=hashed_otp
 - `n`（可选）：UUID 数量（最大 25，默认 10）
 
 **响应：**
-^^^json
+```json
 {
   "success": 1,
   "uuids": ["uuid1", "uuid2", ...],
@@ -96,7 +96,7 @@ aid=uuid&password=hashed_password&otp=hashed_otp
   "prefix": "SYNPOW",
   "message": "SHA512(`{prefix};{one of uuids};{your account id};{nonce}`), reward = 2^leading_zeros coffee"
 }
-^^^
+```
 
 ---
 
@@ -104,12 +104,12 @@ aid=uuid&password=hashed_password&otp=hashed_otp
 提交工作量证明并获得咖啡奖励。
 
 **请求：**
-^^^
+```
 powdata=SYNPOW;{uuid};{aid};{nonce}
-^^^
+```
 
 **响应：**
-^^^json
+```json
 {
   "success": 1,
   "coffee": 16,
@@ -119,7 +119,7 @@ powdata=SYNPOW;{uuid};{aid};{nonce}
   "message": "☕ Coffee brewed successfully! +16 coffee (2^4)",
   "pow_hash": "0000a1b2c3d4..."
 }
-^^^
+```
 
 ---
 
@@ -127,7 +127,7 @@ powdata=SYNPOW;{uuid};{aid};{nonce}
 获取账户状态。aid 自动从 Cookie 读取。
 
 **响应：**
-^^^json
+```json
 {
   "success": 1,
   "aid": "uuid",
@@ -135,15 +135,15 @@ powdata=SYNPOW;{uuid};{aid};{nonce}
   "unsolved_count": 5,
   "unsolved_uuids": ["uuid1", "uuid2", ...]
 }
-^^^
+```
 
 ---
 
 ## 奖励计算
 
-^^^
+```
 奖励 = 2 ^ 前导零数量
-^^^
+```
 
 1. 计算哈希：`SHA512(SYNPOW;{uuid};{aid};{nonce})`
 2. 统计哈希值开头的零的数量
@@ -166,24 +166,24 @@ powdata=SYNPOW;{uuid};{aid};{nonce}
 ## 快速开始
 
 ### 1. 注册
-^^^bash
+```bash
 curl -X POST https://api.com/reg -c cookies.txt
-^^^
+```
 
 ### 2. 登录（可选）
-^^^bash
+```bash
 curl -X POST https://api.com/login \
   -d "aid=uuid&password=hash&otp=hash" \
   -c cookies.txt
-^^^
+```
 
 ### 3. 获取 UUID
-^^^bash
+```bash
 curl https://api.com/issue?n=5 -b cookies.txt
-^^^
+```
 
 ### 4. 挖矿（客户端）
-^^^javascript
+```javascript
 async function mine(uuid, aid) {
   let nonce = 0;
   while (true) {
@@ -199,16 +199,16 @@ async function mine(uuid, aid) {
 
 const result = await mine(uuid, aid);
 // result.powdata = "SYNPOW;uuid;aid;12345"
-^^^
+```
 
 ### 5. 提交 POW
-^^^bash
+```bash
 curl -X POST https://api.com/brew \
   -d "powdata=SYNPOW;uuid;aid;12345" \
   -b cookies.txt
-^^^
+```
 
 ### 6. 查看状态
-^^^bash
+```bash
 curl https://api.com/stat -b cookies.txt
-^^^
+```
