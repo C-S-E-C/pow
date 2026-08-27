@@ -16,7 +16,7 @@ A Proof of Work (POW) API where users earn coffee rewards by solving SHA-512 cha
 ---
 
 ## API Endpoints
-
+> ⚠️ Post body format is URLSearchParams not JSON
 ### POST /reg
 Register a new account.
 
