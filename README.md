@@ -86,6 +86,7 @@ Get UUIDs for mining. Aid is auto-read from cookie.
 
 **Query Parameters:**
 - `n` (optional): Number of UUIDs (max 25, default 10)
+- `aid` (or provide via cookie automaticly): account id
 
 **Response:**
 ```json
@@ -106,6 +107,7 @@ Submit proof of work and earn coffee rewards.
 **Request:**
 ```
 powdata=SYNPOW;{uuid};{aid};{nonce}
+aid={account id} or provide automaticly via cookie
 ```
 
 **Response:**
@@ -125,6 +127,9 @@ powdata=SYNPOW;{uuid};{aid};{nonce}
 
 ### GET /stat
 Get account status. Aid is auto-read from cookie.
+
+**Query Parameters:**
+- `aid` (or provide via cookie automaticly): account id
 
 **Response:**
 ```json
