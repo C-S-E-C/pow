@@ -18,7 +18,7 @@
 ## API 端点
 
 ### POST /reg
-注册新账号。
+注册新账号，并将账号完整信息保存到cookie
 
 **请求：** 无请求体
 
@@ -86,6 +86,7 @@ aid=uuid&password=hashed_password&otp=hashed_otp
 
 **查询参数：**
 - `n`（可选）：UUID 数量（最大 25，默认 10）
+- `aid`（或从cookie自动获取）：账号id
 
 **响应：**
 ```json
@@ -106,6 +107,7 @@ aid=uuid&password=hashed_password&otp=hashed_otp
 **请求：**
 ```
 powdata=SYNPOW;{uuid};{aid};{nonce}
+aid=账号id #或从cookie获取
 ```
 
 **响应：**
@@ -125,6 +127,9 @@ powdata=SYNPOW;{uuid};{aid};{nonce}
 
 ### GET /stat
 获取账户状态。aid 自动从 Cookie 读取。
+
+**查询参数：**
+- `aid`（或从cookie自动获取）：账号id
 
 **响应：**
 ```json
