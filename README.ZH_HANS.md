@@ -16,7 +16,7 @@
 ---
 
 ## API 端点
-
+> ⚠️ POST body数据格式应为URLSearchParams，不是JSON
 ### POST /reg
 注册新账号，并将账号完整信息保存到cookie
 
@@ -106,8 +106,7 @@ aid=uuid&password=hashed_password&otp=hashed_otp
 
 **请求：**
 ```
-powdata=SYNPOW;{uuid};{aid};{nonce}
-aid={账号id} #或从cookie获取
+powdata=SYNPOW;{uuid};{aid};{nonce}&aid={账号id} #或从cookie获取
 ```
 
 **响应：**
